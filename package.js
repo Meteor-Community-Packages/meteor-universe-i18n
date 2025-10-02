@@ -1,6 +1,6 @@
 Package.describe({
   name: 'universe:i18n',
-  version: '3.0.1',
+  version: '3.1.0',
   summary:
     'Lightweight i18n, YAML & JSON translation files, string interpolation, incremental & remote loading',
   git: 'https://github.com/vazco/meteor-universe-i18n.git',
@@ -17,6 +17,8 @@ Package.registerBuildPlugin({
   name: 'universe:i18n',
   use: ['caching-compiler@2.0.0', 'tracker', 'typescript'],
   sources: [
+    'source/formatters/base.ts',
+    'source/formatters/default.ts',
     'source/common.ts',
     'source/compiler.ts',
     'source/utils.ts',

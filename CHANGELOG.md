@@ -1,3 +1,13 @@
+## [v3.1.0](https://github.com/vazco/meteor-universe-i18n/tree/v3.1.0) (2025-10-02)
+
+- **Added:** Pluggable message formatter system - allows using custom message formats (e.g., ICU MessageFormat) or creating your own formatters
+- **Added:** `MessageFormatter` interface for implementing custom formatters
+- **Added:** `DefaultMessageFormatter` class that implements the original universe:i18n format
+- **Added:** `messageFormatter` option in `setOptions()` to configure custom formatters
+- **Added:** Comprehensive documentation in `CUSTOM_FORMATTERS.md` with examples including ICU MessageFormat implementation
+- **Added:** Test coverage for custom formatter functionality
+- **Exported:** `MessageFormatter`, `FormatterOptions`, and `DefaultMessageFormatter` types for TypeScript users
+
 ## [v3.0.1](https://github.com/vazco/meteor-universe-i18n/tree/v3.0.1) (2024-09-13)
 
 - **Fixed:** Preserving context of environment variables in an altered publication ([\#188](https://github.com/vazco/meteor-universe-i18n/pull/191))

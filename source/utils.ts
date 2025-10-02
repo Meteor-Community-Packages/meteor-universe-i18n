@@ -7,12 +7,12 @@ export function get(object: UnknownRecord, path: string) {
   const keys = path.split('.');
   const last = keys.pop()!;
 
-  let key: string | undefined;
-  while ((key = keys.shift())) {
+  // Use index-based iteration instead of shift() for better performance
+  for (let i = 0; i < keys.length; i++) {
     if (typeof object !== 'object' || object === null) {
-      break;
+      return undefined;
     }
-    object = object[key] as UnknownRecord;
+    object = object[keys[i]] as UnknownRecord;
   }
 
   return object?.[last];
@@ -26,8 +26,9 @@ export function set(object: UnknownRecord, path: string, value: unknown) {
   const keys = path.split('.');
   const last = keys.pop()!;
 
-  let key: string | undefined;
-  while ((key = keys.shift())) {
+  // Use index-based iteration instead of shift() for better performance
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
     if (object[key] === undefined) {
       object[key] = {};
     }

@@ -13,9 +13,9 @@ i18n._loadLocaleWithAncestors = (locale, options) => {
   let promise = Promise.resolve();
   if (!options?.noDownload) {
     const locales = i18n._normalizeWithAncestors(locale);
-    locales.forEach(locale => {
-      i18n._isLoaded[locale] = false;
-    });
+    for (const locale1 of locales) {
+      i18n._isLoaded[locale1] = false;
+    }
 
     const loadOptions = { ...options, silent: true };
     promise = locales.reduce(
@@ -82,13 +82,11 @@ i18n.loadLocale = (locale, options) => {
 
 const preloaded = (window as any).__uniI18nPre;
 if (typeof preloaded === 'object') {
-  Object.entries(preloaded as Record<string, unknown>).map(
-    ([locale, translations]) => {
-      if (translations) {
-        i18n.addTranslations(locale, translations);
-      }
-    },
-  );
+  for (const [locale, translations] of Object.entries(preloaded as Record<string, unknown>)) {
+    if (translations) {
+      i18n.addTranslations(locale, translations);
+    }
+  }
 }
 
 (Meteor as any).connection._stream.on('reset', () => {
