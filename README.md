@@ -25,6 +25,7 @@ The package supports:
 - ECMAScript 6 modules
 - **supports dynamic imports** (Client does not need to download all translations at once)
 - remote loading of translations from a different host
+- **pluggable message formatters** (use ICU MessageFormat or create your own custom formatter)
 
 **Table of Contents**
 

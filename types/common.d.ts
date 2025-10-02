@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
+import { MessageFormatter } from './formatters/base';
 import type { JSONObject } from './utils';
 export interface GetCacheEntry {
     getJS(locale: string, namespace?: string, isBefore?: boolean): string;
@@ -39,6 +40,7 @@ export interface Options {
     translationsHeaders: Record<string, string>;
     pluralizationRules: Record<string, (count: number) => number>;
     pluralizationDivider: string;
+    messageFormatter: MessageFormatter;
 }
 export interface SetLocaleOptions extends LoadLocaleOptions {
     noDownload?: boolean;
@@ -59,9 +61,7 @@ declare const i18n: {
     _normalizeWithAncestorsCache: Record<string, readonly string[]>;
     _translations: JSONObject;
     _ts: number;
-    _interpolateTranslation(variables: Record<string, unknown>, translation: string): string;
     _normalizeGetTranslation(locales: string[], key: string): string;
-    _pluralizeTranslation(translation: string, locale: string, count?: number): string;
     __(...args: unknown[]): string;
     addTranslation(locale: string, ...args: unknown[]): {};
     addTranslations(locale: string, ...args: unknown[]): JSONObject;
@@ -84,5 +84,7 @@ declare const i18n: {
     setOptions(options: Partial<Options>): void;
 };
 export { i18n };
+export { MessageFormatter, FormatterOptions } from './formatters/base';
+export { DefaultMessageFormatter } from './formatters/default';
 export default i18n;
 //# sourceMappingURL=common.d.ts.map

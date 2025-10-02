@@ -5,12 +5,13 @@ import { JSONObject, set } from './utils';
 
 function getDiff(locale: string, diffWith?: string) {
   const diff: JSONObject = {};
-  const diffKeys = i18n.getAllKeysForLocale(diffWith);
-  i18n.getAllKeysForLocale(locale).forEach(key => {
-    if (diffKeys.includes(key)) {
+  // Use Set for O(1) lookup instead of O(n) with includes()
+  const diffKeysSet = new Set(i18n.getAllKeysForLocale(diffWith));
+  for (const key of i18n.getAllKeysForLocale(locale)) {
+    if (diffKeysSet.has(key)) {
       set(diff, key, i18n.getTranslation(key));
     }
-  });
+  }
 
   return diff;
 }
