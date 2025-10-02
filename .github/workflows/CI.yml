@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
 
       - name: Check dependency duplications
         uses: vazco/open-standards/actions/npm-dependency-duplications/@master
@@ -22,7 +22,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '22.x'
 
       - name: Install Meteor
         run: npm install -g meteor

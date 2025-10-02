@@ -1,3 +1,4 @@
+/// <reference path="../types/meteor.d.ts" />
 import type { NextHandleFunction } from 'connect';
 import { Match, check } from 'meteor/check';
 import { DDP } from 'meteor/ddp';
@@ -219,7 +220,7 @@ Meteor.onConnection(connection => {
 });
 
 function patchPublish(publish: typeof Meteor.publish) {
-  return function (this: typeof Meteor, name, func, ...args) {
+  return function (this: Meteor.PublishThisType, name, func, ...args) {
     return _publishConnectionId.withValue(this?.connection?.id, () => {
       return publish.call(
         this,

@@ -8,13 +8,13 @@
     "test:CI": "./tests/tests.bash"
   },
   "devDependencies": {
-    "@types/js-yaml": "4.0.5",
-    "@types/meteor": "1.4.76",
-    "@types/mocha": "9.1.0",
-    "@types/node": "16.4.10",
-    "@types/react": "17.0.15",
+    "@types/js-yaml": "4.0.9",
+    "@types/meteor": "2.9.9",
+    "@types/mocha": "9.1.1",
+    "@types/node": "22.18.8",
+    "@types/react": "19.2.0",
     "@types/strip-json-comments": "3.0.0",
-    "eslint-config-vazco": "7.0.0",
-    "typescript": "4.8.4"
+    "eslint-config-vazco": "7.4.0",
+    "typescript": "5.6.3"
   }
 }
