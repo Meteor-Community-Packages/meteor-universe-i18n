@@ -220,16 +220,16 @@ Meteor.onConnection(connection => {
 
 function patchPublish(publish: typeof Meteor.publish) {
   return function (this: typeof Meteor, name, func, ...args) {
-    return publish.call(
-      this,
-      name,
-      function (...args) {
-        return _publishConnectionId.withValue(this?.connection?.id, () =>
-          func.apply(this, args),
-        );
-      },
-      ...args,
-    );
+    return _publishConnectionId.withValue(this?.connection?.id, () => {
+      return publish.call(
+        this,
+        name,
+        function (...args) {
+          return func.apply(this, args);
+        },
+        ...args,
+      );
+    });
   } as typeof Meteor.publish;
 }
 

@@ -14,8 +14,6 @@
     "@types/mocha": "9.1.0",
     "@types/node": "16.4.10",
     "@types/react": "17.0.15",
-    "@types/sinon": "10.0.11",
-    "@types/sinon-chai": "3.2.8",
     "@types/strip-json-comments": "3.0.0",
     "chai": "^4.3.10",
     "eslint-config-vazco": "7.0.0",

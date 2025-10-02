@@ -1,3 +1,13 @@
+## [v3.0.1](https://github.com/vazco/meteor-universe-i18n/tree/v3.0.1) (2024-09-13)
+
+- **Fixed:** Preserving context of environment variables in an altered publication ([\#188](https://github.com/vazco/meteor-universe-i18n/pull/191))
+
+## [v3.0.0](https://github.com/vazco/meteor-universe-i18n/tree/v3.0.0) (2024-07-26)
+
+- **Breaking:** Added support for Meteor 3.0 ([\#188](https://github.com/vazco/meteor-universe-i18n/pull/188))
+
+- **Breaking:** Removed support for Meteor <3.0
+
 ## [v2.1.0](https://github.com/vazco/meteor-universe-i18n/tree/v2.1.0) (2023-09-27)
 
 - **Added:** Pluralization ([\#183](https://github.com/vazco/meteor-universe-i18n/pull/183))

@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        meteor-version: ['2.5.6', '2.6.1', '3.0-beta.6'] # ? - latest meteor version
+        meteor-version: ['2.5.6', '2.6.1', '3.0', '3.3.2'] # ? - latest meteor version
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,13 +22,19 @@ jobs:
       - name: Check dependency vulnerabilities
         uses: vazco/open-standards/actions/npm-dependency-vulnerabilities/@master
 
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
       - name: Install Meteor
-        env:
-          METEOR_VERSION: ${{ matrix.meteor-version }}
-        run: curl https://install.meteor.com/?release=$METEOR_VERSION | /bin/sh
+        run: npm install -g meteor
+
+      - name: Update PATH
+        run: echo "$HOME/.meteor" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: meteor npm install
+        run: meteor npm ci
 
       - name: Lint
         run: meteor npm run lint:ts

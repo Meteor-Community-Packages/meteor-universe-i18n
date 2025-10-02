@@ -1,6 +1,6 @@
 Package.describe({
   name: 'universe:i18n',
-  version: '2.1.0',
+  version: '3.0.1',
   summary:
     'Lightweight i18n, YAML & JSON translation files, string interpolation, incremental & remote loading',
   git: 'https://github.com/vazco/meteor-universe-i18n.git',
@@ -16,7 +16,7 @@ const npmDependencies = {
 Npm.depends(npmDependencies);
 Package.registerBuildPlugin({
   name: 'universe:i18n',
-  use: ['caching-compiler@1.2.2 || 2.0.0-beta300.6 || 2.0.0', 'tracker', 'typescript'],
+  use: ['caching-compiler@2.0.0', 'tracker', 'typescript'],
   sources: [
     'source/common.ts',
     'source/compiler.ts',
@@ -27,17 +27,17 @@ Package.registerBuildPlugin({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom(['2.3', '3.0-beta.6']);
+  api.versionsFrom(['3.0']);
   api.use([
     'check',
     'ddp',
-    'fetch@0.1.1',
+    'fetch',
     'isobuild:compiler-plugin@1.0.0',
     'promise',
     'tracker',
     'typescript',
     'webapp',
-    'zodern:types@1.0.0',
+    'zodern:types@1.0.13',
   ]);
 
   api.mainModule('source/client.ts', 'client');
@@ -46,11 +46,7 @@ Package.onUse(function (api) {
 });
 
 Package.onTest(function (api) {
-  api.use([
-    'meteortesting:mocha@3.0.3-alpha300.11',
-    'typescript',
-    'universe:i18n',
-  ]);
+  api.use(['meteortesting:mocha', 'typescript', 'universe:i18n']);
 
   api.addFiles([
     'tests/data/de/ch.i18n.yml',
