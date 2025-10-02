@@ -98,7 +98,7 @@ const i18n = {
           let formattedLocale = '';
           for (let i = 0; i < parts.length; i++) {
             if (i > 0) {
-              formattedLocale += '-' + parts[i].toUpperCase();
+              formattedLocale += `-${parts[i].toUpperCase()}`;
             } else {
               formattedLocale = parts[i].toLowerCase();
             }
@@ -214,7 +214,7 @@ const i18n = {
     for (let i = 0; i < keys.length; i++) {
       const k = keys[i];
       if (k && typeof k === 'string') {
-        key += (key ? '.' : '') + k;
+        key += key ? `.${k}` : k;
       }
     }
     const { defaultLocale } = i18n.options;

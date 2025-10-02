@@ -40,9 +40,7 @@ export class DefaultMessageFormatter implements MessageFormatter {
 
     for (const [key, value] of Object.entries(params)) {
       const tag = options.open + key + options.close;
-      if (interpolated.includes(tag)) {
-        interpolated = interpolated.replaceAll(tag, value as string);
-      }
+      interpolated = interpolated.replaceAll(tag, value as string);
     }
 
     return interpolated;

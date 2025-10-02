@@ -23,9 +23,9 @@ class InterpolatingFormatter implements MessageFormatter {
   ): string {
     // Simple interpolation: replace {{key}} with value
     let result = message;
-    Object.entries(params).forEach(([key, value]) => {
+    for (const [key, value] of Object.entries(params)) {
       result = result.replace(`{{${key}}}`, String(value));
-    });
+    }
     return result;
   }
 }
